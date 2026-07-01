@@ -24,6 +24,11 @@ final class InMemoryEntityRepository implements EntityRepositoryInterface
         private readonly InMemoryEntityStorage $storage,
     ) {}
 
+    public function create(array $values = []): EntityInterface
+    {
+        return $this->storage->create($values);
+    }
+
     public function find(string $id, ?string $langcode = null, bool $fallback = false): ?EntityInterface
     {
         return $this->storage->load($id);
